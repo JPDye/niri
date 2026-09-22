@@ -1,4 +1,6 @@
-use crate::appearance::{Color, WorkspaceShadow, WorkspaceShadowPart, Border, BorderRule, DEFAULT_BACKDROP_COLOR};
+use crate::appearance::{
+    Border, BorderRule, Color, WorkspaceShadow, WorkspaceShadowPart, DEFAULT_BACKDROP_COLOR,
+};
 use crate::utils::{Flag, MergeWith};
 use crate::FloatOrInt;
 
@@ -123,7 +125,7 @@ pub struct Overview {
     pub zoom: f64,
     pub backdrop_color: Color,
     pub workspace_shadow: WorkspaceShadow,
-    pub  workspace_border: Border
+    pub workspace_border: Border,
 }
 
 impl Default for Overview {
