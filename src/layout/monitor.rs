@@ -1092,12 +1092,20 @@ impl<W: LayoutElement> Monitor<W> {
             .as_ref()
             .and_then(|hint| hint.workspace.existing_id());
 
+        let active_ws_id = self.workspaces[self.active_workspace_idx].id();
+
         for ws in &mut self.workspaces {
-            ws.update_render_elements(is_active, RenderLayer::MovingBetweenWorkspaces);
+            let is_active_ws = ws.id() == active_ws_id;
+            ws.update_render_elements(
+                is_active,
+                is_active_ws,
+                RenderLayer::MovingBetweenWorkspaces,
+            );
         }
 
         for (ws, geo) in self.workspaces_with_render_geo_mut(true) {
-            ws.update_render_elements(is_active, RenderLayer::Normal);
+            let is_active_ws = ws.id() == active_ws_id;
+            ws.update_render_elements(is_active, is_active_ws, RenderLayer::Normal);
 
             if Some(ws.id()) == insert_hint_ws_id {
                 insert_hint_ws_geo = Some(geo);
