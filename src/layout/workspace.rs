@@ -401,10 +401,13 @@ impl<W: LayoutElement> Workspace<W> {
         );
 
         if layer.is_normal() {
+            // The shadow and the border follow the workspace corner radius.
+            let radius = CornerRadius::from(self.options.overview.workspace_corner_radius as f32);
+
             self.shadow.update_render_elements(
                 self.view_size,
                 true,
-                CornerRadius::default(),
+                radius,
                 self.scale.fractional_scale(),
                 1.,
             );
@@ -415,7 +418,7 @@ impl<W: LayoutElement> Workspace<W> {
                 true,
                 self.is_urgent(),
                 view_rect,
-                CornerRadius::default(),
+                radius,
                 self.scale.fractional_scale(),
                 1.0,
             );

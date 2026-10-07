@@ -648,6 +648,27 @@ mod tests {
     }
 
     #[test]
+    fn parse_overview_workspace_corner_radius() {
+        let parsed = do_parse(
+            r#"
+            overview {
+                workspace-corner-radius 3
+            }
+            "#,
+        );
+        assert_eq!(parsed.overview.workspace_corner_radius, 3.);
+
+        let parsed = do_parse(
+            r#"
+            overview {
+                zoom 0.5
+            }
+            "#,
+        );
+        assert_eq!(parsed.overview.workspace_corner_radius, 0.);
+    }
+
+    #[test]
     fn parse_on_xdg_activate() {
         let parsed = do_parse(
             r#"
@@ -1706,6 +1727,7 @@ mod tests {
                     b: 0.15,
                     a: 1.0,
                 },
+                workspace_corner_radius: 0.0,
                 workspace_shadow: WorkspaceShadow {
                     off: false,
                     offset: ShadowOffset {

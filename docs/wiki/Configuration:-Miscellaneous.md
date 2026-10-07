@@ -28,6 +28,8 @@ overview {
     zoom 0.5
     backdrop-color "#262626"
 
+    workspace-corner-radius 0
+
     workspace-shadow {
         // off
         softness 40
@@ -235,6 +237,18 @@ overview {
 ```
 
 You can also set the color per-output [in the output config](./Configuration:-Outputs.md#backdrop-color).
+
+#### `workspace-corner-radius`
+
+Round the corners of workspaces visible in the overview.
+The workspace shadow and the workspace border follow this radius.
+
+```kdl
+// Round the workspace corners in the overview.
+overview {
+    workspace-corner-radius 4
+}
+```
 
 #### `workspace-shadow`
 
